@@ -70,20 +70,20 @@ class App
     book_index = gets.chomp.to_i
     puts 'Select a person from the following list by number (not id)'
     @people.each_with_index do |person_item, index|
-      puts "#{index}) Name: #{person_item.name}, ID: #{person_item.id}, Age: #{person_item.age}"
+      puts "#{index}) [#{person_item.class}] Name: #{person_item.name}, ID: #{person_item.id}, Age: #{person_item.age}"
     end
     person_index = gets.chomp.to_i
     print 'Date: '
     rental_date = gets.chomp
-    @rental << Rental.new(rental_date, @books[book_index], @people[person_index])
+    @rentals << Rental.new(rental_date, @books[book_index], @people[person_index])
     puts 'Rental created succesfully'
   end
 
   def list_person_rental
     print 'ID of person: '
-    person_id = gets.chomp
-    rentals_result = @rental.select { |rental_item| rental_item.person.id == person_id }
-    puts Rentals:
+    person_id = gets.chomp.to_i
+    rentals_result = @rentals.select { |rental_item| rental_item.person.id == person_id }
+    puts 'Rentals:'
     rentals_result.each do |rental_result|
       puts "Date: #{rental_result.date}, Book \"#{rental_result.book.title}\" by #{rental_result.book.author}"
     end

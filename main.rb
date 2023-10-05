@@ -30,6 +30,10 @@ def main
   puts 'Welcome to School Library App!'
   loop do
     option = present_options
+    if option == 7
+      puts 'Thak you for using this app!'
+      break
+    end
     start_method(app, option)
   end
 end
