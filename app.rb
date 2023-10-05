@@ -1,6 +1,8 @@
 require './book'
 require './person'
 require './rental'
+require './student'
+require './teacher'
 
 class App
   attr_accessor :books, :people, :rentals
@@ -35,7 +37,7 @@ class App
       print 'Has parent permission? [Y/N]: '
       parent_permission = gets.chomp.downcase
       parent_permission = parent_permission == 'y'
-      new_student = Student.new(result_arr[0], result_arr[1], student_classroom, parent_permission)
+      new_student = Student.new(result_arr[0], result_arr[1], student_classroom, parent_permission: parent_permission)
       @people << new_student
     else
       print 'Specialization: '
